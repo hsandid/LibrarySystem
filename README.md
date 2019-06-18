@@ -1,5 +1,5 @@
 # Library-System
-# Main Project for my 'Computer Networks' Course. ( EECE 350)
+# Main Project for EECE 350 (Computer Networks)
 
 --- Main Client (lib_mainclient.java) : 
 User-Friendly GUI where the user can select/reserve books , communicates with the Main Server on port 3678.
