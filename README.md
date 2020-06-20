@@ -1,17 +1,15 @@
-# Library-System
-# Main Project for EECE 350 (Computer Networks)
+# Library System, realized for EECE-350 (Computer Networks)
 
-Main Client (lib_mainclient.java) : 
-User-Friendly GUI where the user can select/reserve books , communicates with the Main Server on port 3678.
+Main objective of this project was to learn client/server interaction using socket programming, and how to initialize & interact with a SQL database.
 
-Main Server (lib_mainServer.java) :
-No GUI , communicates with the Main Client on port 3678 , communicates with the Secondary Server on port 3680, communicates with the local mySQL database.
+Completed during Spring 2019.
 
-Secondary Server (lib_secondaryServer.java) :
-No GUI , communicates with the Main Server on port 3680, communicates with the local mySQL database.
+## Contents
 
-SQL Init. File (lib_databaseInit.sql):
-Holds commands to initialize the local mySQL database for operation with the main and secondary servers.
+- *java/lib_mainclient.java* : Initializes a user-friendly GUI where the user can select/reserve books , communicates with the main server on port 3678.
 
-Credits:
-Hadi R. Al-Sandid - Farah Hussein - Mohammad Saffiedine - Ahmad Wahidi
+- *java/lib_mainServer.java* : Initializes a multi-threaded server which act as an intermediary between the client and a local database named 'library'. The main server communicates with the client on port 3678 , and communicates with the secondary server on port 3680.
+
+*java/lib_secondaryServer.java* : Initializes a multi-threaded server which act as an intermediary between the client and a local database named 'library_Alt'. The secondary server communicates with the main server on port 3680. All communications from the client is forwarded to the secondary server by the main server.
+
+- *sql/lib_databaseInit.sql* : Holds commands to initialize the local mySQL database for operation with the main and secondary servers.
