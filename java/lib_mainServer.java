@@ -1,12 +1,3 @@
-//Who worked on this part : Ahmad , Mohammad
-//Roles : Ahmad-> Function connecting to the MySQL database and extacting data + database init/values + Socket programming to connect the server/client  
-//      : Mohammad -> Socket programming to connect the server/client  +Function connecting to the MySQL database and extacting data + database init/values    
-//      :
-
-
-//Used Libraries 
-//Most of them have been imported through examples
-
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -115,7 +106,7 @@ public void acceptConnections() {
 	  	}
 	  	finally
 	  	{
-	  		
+	  		//Empty "finally" block
 	  	}
 	  }  
 	  
@@ -144,16 +135,13 @@ public void acceptConnections() {
 				try {
 					outToClient = new ObjectOutputStream(connectionSocket.getOutputStream());
 				} catch (IOException e2) {
-					// TODO Auto-generated catch block
 					e2.printStackTrace();
 				} 
 
-        // 
 	             ObjectInputStream inFromClient = null;
 				try {
 					inFromClient = new ObjectInputStream(connectionSocket.getInputStream());
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} 
         
@@ -164,10 +152,8 @@ public void acceptConnections() {
 	            try {
 					userQuery = (String[]) inFromClient.readObject();
 				} catch (ClassNotFoundException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 	            
@@ -212,14 +198,12 @@ public void acceptConnections() {
 			       	      conn.close();
 						
 					} catch (SQLException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 		       	    
-	            	 try {
+	            	 		try {
 	 					outToClient.writeObject(outString);
 	 				} catch (IOException e) {
-	 					// TODO Auto-generated catch block
 	 					e.printStackTrace();
 	 				} 
 
@@ -238,18 +222,11 @@ public void acceptConnections() {
 			       	      String tempPass= null;
 			       	      if (rs.next())
 			       	      {
-			       	    	  
-			       	    	
-			       	    		
-				       	    	
 				       	    	
 				       	    	tempPass = rs.getString("pass");
 				       	    	System.out.println(tempPass);
 				       	    	System.out.println(userQuery[2]);
-				       	    	
-				       	    	
-			       	    	
-			       	    	
+					      
 			       	    	if (tempPass.startsWith(userQuery[2]))
 			       	    	{
 			       	    		outString="ok";
@@ -271,14 +248,12 @@ public void acceptConnections() {
 			       	      conn.close();
 						
 					} catch (SQLException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 		       	    
-	            	 try {
+	            			 try {
 	 					outToClient.writeObject(outString);
 	 				} catch (IOException e) {
-	 					// TODO Auto-generated catch block
 	 					e.printStackTrace();
 	 				} 
 
@@ -310,8 +285,6 @@ public void acceptConnections() {
 		       	          
 	                  //storing the data into the array of string myList
 		       	          results.add(title);
-		       	          
-		       	          
 		       	      
 		       		}
 			       	rs.close();
@@ -342,7 +315,6 @@ public void acceptConnections() {
 	            	 try {
 	 					outToClient.writeObject(results);
 	 				} catch (IOException e) {
-	 					// TODO Auto-generated catch block
 	 					e.printStackTrace();
 	 				} 
 	            }
@@ -367,10 +339,8 @@ public void acceptConnections() {
 		       	    	try {
 							queryAltServer(outQuery);
 						} catch (ClassNotFoundException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						} catch (IOException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 			       	      
@@ -394,14 +364,12 @@ public void acceptConnections() {
 			       	      conn.close();
 						
 					} catch (SQLException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 		       	    
 	            	 try {
 	 					outToClient.writeObject(results);
 	 				} catch (IOException e) {
-	 					// TODO Auto-generated catch block
 	 					e.printStackTrace();
 	 				} 
 
@@ -430,10 +398,8 @@ public void acceptConnections() {
 		       	    	try {
 							queryAltServer(outQuery);
 						} catch (ClassNotFoundException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						} catch (IOException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 			       	      
@@ -445,23 +411,18 @@ public void acceptConnections() {
 			       	    		results.add(tempTitle);
 			       	    	}
 			       	      }
-			       	      
-			       	    
 			       	 
-			       	      
 			       	      rs.close();
 			       	      stmt.close();
 			       	      conn.close();
 						
 					} catch (SQLException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 		       	    
 	            	 try {
 	 					outToClient.writeObject(results);
 	 				} catch (IOException e) {
-	 					// TODO Auto-generated catch block
 	 					e.printStackTrace();
 	 				} 
 
@@ -503,17 +464,11 @@ public void acceptConnections() {
 	            	 try {
 	 					outToClient.writeObject(outString);
 	 				} catch (IOException e) {
-	 					// TODO Auto-generated catch block
 	 					e.printStackTrace();
 	 				} 
 
 	            }
 	          
-	           
-	            
-	            
-	           
-	              
 	            if (userQuery[0].startsWith("resBook"))
 	            {
 	            	 // Initializing the connection the database and fetching the requested data 
@@ -562,14 +517,12 @@ public void acceptConnections() {
 			       	     
 						
 					} catch (SQLException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 		       	    
 	            	 try {
 	 					outToClient.writeObject(outString);
 	 				} catch (IOException e) {
-	 					// TODO Auto-generated catch block
 	 					e.printStackTrace();
 	 				} 
 
@@ -652,14 +605,12 @@ public void acceptConnections() {
 			       	     
 						
 					} catch (SQLException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 		       	    
 	            	 try {
 	 					outToClient.writeObject(outString);
 	 				} catch (IOException e) {
-	 					// TODO Auto-generated catch block
 	 					e.printStackTrace();
 	 				} 
 
@@ -715,14 +666,12 @@ public void acceptConnections() {
 			       	      conn.close();
 						
 					} catch (SQLException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 		       	    
 	            	 try {
 	 					outToClient.writeObject(results);
 	 				} catch (IOException e) {
-	 					// TODO Auto-generated catch block
 	 					e.printStackTrace();
 	 				} 
 
@@ -796,14 +745,12 @@ public void acceptConnections() {
 			       	    
 						
 					} catch (SQLException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 		       	    
 	            	 try {
 	 					outToClient.writeObject(results);
 	 				} catch (IOException e) {
-	 					// TODO Auto-generated catch block
 	 					e.printStackTrace();
 	 				} 
 
@@ -874,14 +821,12 @@ public void acceptConnections() {
 			       	    
 						
 					} catch (SQLException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 		       	    
 	            	 try {
 	 					outToClient.writeObject(results);
 	 				} catch (IOException e) {
-	 					// TODO Auto-generated catch block
 	 					e.printStackTrace();
 	 				} 
 
@@ -939,28 +884,17 @@ public void acceptConnections() {
 			       	      
 			       	    
 						
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 		       	    
 	            	 try {
-	 					outToClient.writeObject(results);
-	 				} catch (IOException e) {
-	 					// TODO Auto-generated catch block
-	 					e.printStackTrace();
-	 				} 
-
-	            }
-	            
-	            
-	             
-	            
-
-	            	    
-  }
-	    
-	    
+					outToClient.writeObject(results);
+				} catch (IOException e) {
+					e.printStackTrace();
+				} 
+	            }  
+  }  
   }    
 }
 
