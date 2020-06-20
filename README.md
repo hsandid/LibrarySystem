@@ -8,16 +8,16 @@ Completed during Spring 2019.
 
 - *java/lib_mainclient.java* : 
 
-Initializes a user-friendly GUI where the user can select/reserve books , communicates with the main server on port 3678.
+   - Initializes a user-friendly GUI where the user can select/reserve books , communicates with the main server on port 3678.
 
 - *java/lib_mainServer.java* : 
 
-Initializes a multi-threaded server which act as an intermediary between the client and a local database named 'library'. The main server communicates with the client on port 3678 , and communicates with the secondary server on port 3680.
+   - Initializes a multi-threaded server which act as an intermediary between the client and a local database named 'library'. The main server communicates with the client on port 3678 , and communicates with the secondary server on port 3680.
 
 - *java/lib_secondaryServer.java* : 
 
-Initializes a multi-threaded server which act as an intermediary between the client and a local database named 'library_Alt'. The secondary server communicates with the main server on port 3680. All communications from the client is forwarded to the secondary server by the main server.
+   - Initializes a multi-threaded server which act as an intermediary between the client and a local database named 'library_Alt'. The secondary server communicates with the main server on port 3680. All communications from the client is forwarded to the secondary server by the main server.
 
 - *sql/lib_databaseInit.sql* : 
 
-Holds commands to initialize the local mySQL database for operation with the main and secondary servers.
+   - Holds commands to initialize the local mySQL database for operation with the main and secondary servers.
