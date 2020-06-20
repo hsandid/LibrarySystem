@@ -1,5 +1,3 @@
-
-// Default Libraries
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -44,7 +42,7 @@ public class Main_Client {
 	
 	public static void main(String args[])
 	{
-		// Configuring Java Swing to have a look closer to the OS it's operated on
+		// Use the OS theme for Java Swing
 		
 		try { 
 		    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -88,11 +86,8 @@ public class Main_Client {
 				reservations res = new reservations();
 				add("My Account",res);
 				add("Explore Catalogue",finBook);
-				add("Advanced Search",seaBook);
-				
-				
-			}
-			
+				add("Advanced Search",seaBook);	
+			}	
 		}
 		
 			public class historyL extends JFrame
@@ -103,7 +98,6 @@ public class Main_Client {
 				
 				historyL()
 				{
-					
 					super("History");
 					setResizable(false);
 					setSize(400,400);
@@ -121,18 +115,16 @@ public class Main_Client {
 					try {
 						query(findArr);
 					} catch (ClassNotFoundException e) {
-						// TODO Auto-generated catch block
+						// For debugging purposes
 						e.printStackTrace();
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
+						// For debugging purposes
 						e.printStackTrace();
-					}
-					
-					
+					}	
 				}
+				
 				private void query(String[] x) throws IOException, ClassNotFoundException
 				{
-					
 					try
 					{
 						Socket socket = new Socket("localhost",3678);
@@ -149,19 +141,15 @@ public class Main_Client {
 							histBook.add("No Recent Transaction");
 						}
 						
-						histList.setListData(histBook.toArray());
-						
-						
-						
-						
-						
+						histList.setListData(histBook.toArray());	
 					}
 					finally
 					{
-						
+						//Empty 'finally' block
 					}
 				}
 			}
+		
 		//Logon and createAcc pages
 				public class logonPage extends JPanel
 				{
@@ -206,7 +194,6 @@ public class Main_Client {
 						txt4.setForeground(Color.RED);
 						txt4.setHorizontalAlignment(JLabel.CENTER);
 						txt4.setVerticalAlignment(JLabel.CENTER);
-						
 						
 						// Initializing elements position
 						c.insets=new Insets(50,10,50,10);
@@ -278,26 +265,22 @@ public class Main_Client {
 									usLogon[0]="usLogon";
 									usLogon[1] =id.getText();
 									usLogon[2]=String.valueOf(pass.getPassword());
-									
-									
-										
-										try {
-											queryServer(usLogon);
-										} catch (ClassNotFoundException e) {
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										} catch (IOException e) {
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-										
-										if (check.startsWith("ok") )
-										{
+
+									try {
+										queryServer(usLogon);
+									} catch (ClassNotFoundException e) {
+										e.printStackTrace();
+									} catch (IOException e) {
+										e.printStackTrace();
+									}
+
+									if (check.startsWith("ok") )
+									{
 										usernameFinal=id.getText();
 										paneWindow xcd = new paneWindow();
 										invalidate();
 										setVisible(false);
-									    removeAll();
+									    	removeAll();
 									    
 									    getContentPane().add(xcd);
 										}
@@ -306,9 +289,6 @@ public class Main_Client {
 										{
 											txt4.setText("The username/password entered is incorrect");
 										}
-										
-									
-									
 								}
 			
 							}
@@ -325,9 +305,9 @@ public class Main_Client {
 							}
 						}
 					}
+					
 					private void queryServer(String[] x) throws IOException, ClassNotFoundException
 					{
-						
 						try
 						{
 							Socket socket = new Socket("localhost",3678);
@@ -340,14 +320,11 @@ public class Main_Client {
 							
 							check = (String) inFromServer.readObject();
 							
-							System.out.println(check);
-							
-							
-							
+							System.out.println(check);							
 						}
 						finally
 						{
-							
+							//Empty 'finally' block
 						}
 					}
 				}
@@ -373,6 +350,7 @@ public class Main_Client {
 						
 						handler myhandler=new handler();
 						// Creating frame elements
+						
 						b1=new JButton("Confirm Creation");
 						b1.addActionListener(myhandler);
 						
@@ -523,8 +501,7 @@ public class Main_Client {
 					}
 					
 					private void queryServer(String[] x) throws IOException, ClassNotFoundException
-					{
-						
+					{	
 						try
 						{
 							Socket socket = new Socket("localhost",3678);
@@ -534,17 +511,12 @@ public class Main_Client {
 							outToServer.writeObject(x);
 							outToServer.flush();
 							
-							
 							check = (String) inFromServer.readObject();
-							
 							System.out.println(check);
-							
-							
-							
 						}
 						finally
 						{
-							
+							//Empty 'finally' block
 						}
 					}
 				}
@@ -699,10 +671,8 @@ public class Main_Client {
 				try {
 					querygetReservedRequest(findArr);
 				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
@@ -710,15 +680,11 @@ public class Main_Client {
 				try {
 					querygetReservedRequest(findArr);
 				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
-				
-				
+
 				
 			}
 			
@@ -754,19 +720,15 @@ public class Main_Client {
 						try {
 							queryremReservedRequest(findArr);
 						} catch (ClassNotFoundException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						} catch (IOException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 						
 						relRes.setEnabled(false);
 						
 					}
-					
-					
-					
+
 					if ( event.getSource()==refresh)
 					{
 						
@@ -776,10 +738,8 @@ public class Main_Client {
 						try {
 							querygetReservedRequest(findArr);
 						} catch (ClassNotFoundException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						} catch (IOException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 						
@@ -787,31 +747,17 @@ public class Main_Client {
 						try {
 							querygetReservedRequest(findArr);
 						} catch (ClassNotFoundException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						} catch (IOException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
-						}
-						
-						
+						}	
 					}
 					
 					if ( event.getSource()==history)
 					{
-						
-						
 						historyL xcd = new historyL();
-						
 						xcd.setVisible(true);
-						
-						
-					}
-					
-					
-					
-					
-					
+					}	
 				}
 			}
 			
@@ -822,16 +768,12 @@ public class Main_Client {
 					if (event.getSource()==mybookslist)
 					{
 						relRes.setEnabled(true);
-						
 					}
 					
 					if (event.getSource()==myoldlist)
 					{
 						relReq.setEnabled(true);
-						
-					}
-					
-					
+					}	
 				}
 			}
 			private void queryremReservedRequest(String[] x) throws IOException, ClassNotFoundException
@@ -858,18 +800,11 @@ public class Main_Client {
 						requestsBook = (ArrayList<String>) inFromServer.readObject();
 						
 						myoldlist.setListData(requestsBook.toArray());
-					}
-					
-				
-					
-					
-					
-					
-					
+					}	
 				}
 				finally
 				{
-					
+					//Empty 'finally' block
 				}
 			}
 			
@@ -899,16 +834,10 @@ public class Main_Client {
 						myoldlist.setListData(requestsBook.toArray());
 					}
 					
-				
-					
-					
-					
-					
-					
 				}
 				finally
 				{
-					
+					//Empty 'finally' block
 				}
 			}
 			
@@ -1053,10 +982,8 @@ public class Main_Client {
 							try {
 								queryReserveRequestBook(findArr);
 							} catch (ClassNotFoundException e) {
-								// TODO Auto-generated catch block
 								e.printStackTrace();
 							} catch (IOException e) {
-								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
 						}
@@ -1070,17 +997,11 @@ public class Main_Client {
 							try {
 								queryReserveRequestBook(findArr);
 							} catch (ClassNotFoundException e) {
-								// TODO Auto-generated catch block
 								e.printStackTrace();
 							} catch (IOException e) {
-								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
-						}
-						
-						
-						
-						
+						}	
 					}
 					
 					if (event.getSource()==searchBut)
@@ -1091,10 +1012,8 @@ public class Main_Client {
 						try {
 							querySearchBook(findArr);
 						} catch (ClassNotFoundException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						} catch (IOException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 						
@@ -1117,22 +1036,15 @@ public class Main_Client {
 					msgSuc.setText((String)inFromServer.readObject());
 					placeRequest.setEnabled(false);
 					
-				
-					
-					
-					
-					
-					
 				}
 				finally
 				{
-					
+					//Empty 'finally' block
 				}
 			}
 			
 			private void querySearchBook(String[] x) throws IOException, ClassNotFoundException
 			{
-				
 				try
 				{
 					Socket socket = new Socket("localhost",3678);
@@ -1144,13 +1056,10 @@ public class Main_Client {
 				
 					searchBook = ((ArrayList<String>)inFromServer.readObject());
 					findBook.setListData(searchBook.toArray());
-					
-					
-	
 				}
 				finally
 				{
-					
+					//Empty 'finally' block
 				}
 			}
 			
@@ -1168,18 +1077,11 @@ public class Main_Client {
 						try {
 							queryGetBookInfoServer(findArr);
 						} catch (ClassNotFoundException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						} catch (IOException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-						
-					}
-					
-
-					
-					
+					}	
 				}
 			}
 			
@@ -1194,10 +1096,6 @@ public class Main_Client {
 					
 					outToServer.writeObject(x);
 					outToServer.flush();
-				
-					
-					
-					
 					
 					bookInfo.setText((String)inFromServer.readObject());
 					if (bookInfo.getText().startsWith("Available"))
@@ -1208,45 +1106,34 @@ public class Main_Client {
 					{
 						placeRequest.setText("Request Book");
 					}
-					placeRequest.setEnabled(true);
-					
-					
-					
-					
-					
-					
+					placeRequest.setEnabled(true);	
 				}
 				finally
 				{
-					
+					//Empty "finally" block
 				}
 			}
-			
-			
 		}
-		
-		
-		
-		
+
 		public class findBook extends JPanel
 		{
-			private JLabel username; // done
-			private JLabel mybooks; // done
-			private JLabel libcatalogue; // done
-			private JLabel search; // done
+			private JLabel username; 
+			private JLabel mybooks;
+			private JLabel libcatalogue; 
+			private JLabel search; 
 			
-			private JTextField searchfield; // done
+			private JTextField searchfield; 
 			
-			private JButton placeRequest;// done
-			private JButton history;// done
+			private JButton placeRequest;
+			private JButton history;
 			
 			private JComboBox bookgenre;
 			private JRadioButton all;
 			private JRadioButton available;
 			private JRadioButton reservation;
 			
-			private JList mybookslist; // done
-			private JList serverbooks; // done
+			private JList mybookslist;
+			private JList serverbooks;
 			
 			private ArrayList<String> genre = new ArrayList<String>();
 			private ArrayList<String> genBook = new ArrayList<String>();
@@ -1255,11 +1142,9 @@ public class Main_Client {
 			
 			private JLabel bookInfo;
 			private JLabel msgSuc;
-			
-			
+
 			findBook()
 			{
-					
 					setLayout(new GridBagLayout());
 					GridBagConstraints c = new GridBagConstraints();
 			
@@ -1280,7 +1165,7 @@ public class Main_Client {
 					c.gridwidth=1;
 					c.fill=GridBagConstraints.HORIZONTAL;
 					add(mybooks,c);
-					
+				
 					mybookslist=new JList(genre.toArray());
 					mybookslist.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 					mybookslist.setVisibleRowCount(10);
@@ -1327,8 +1212,6 @@ public class Main_Client {
 					c.fill=GridBagConstraints.NONE;
 					add(listScroller1,c);
 					
-					
-					
 					placeRequest = new JButton("Reserve Book");
 					placeRequest.addActionListener(myhandler);
 					placeRequest.setEnabled(false);
@@ -1366,25 +1249,15 @@ public class Main_Client {
 					c.fill=GridBagConstraints.NONE;
 					add(msgSuc,c);
 					
-					
-					
-					
 					findArr[0]="genre";
-					
-					
-					
+				
 						try {
 							queryGenreServer(findArr);
 						} catch (ClassNotFoundException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						} catch (IOException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-				
-						
-					
 				}
 			
 			private class handler implements ActionListener 
@@ -1403,10 +1276,8 @@ public class Main_Client {
 							try {
 								queryReserveRequestBook(findArr);
 							} catch (ClassNotFoundException e) {
-								// TODO Auto-generated catch block
 								e.printStackTrace();
 							} catch (IOException e) {
-								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
 						}
@@ -1420,17 +1291,11 @@ public class Main_Client {
 							try {
 								queryReserveRequestBook(findArr);
 							} catch (ClassNotFoundException e) {
-								// TODO Auto-generated catch block
 								e.printStackTrace();
 							} catch (IOException e) {
-								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
 						}
-						
-						
-						
-						
 					}
 				}
 			}
@@ -1448,18 +1313,11 @@ public class Main_Client {
 					outToServer.flush();
 				
 					msgSuc.setText((String)inFromServer.readObject());
-					placeRequest.setEnabled(false);
-					
-				
-					
-					
-					
-					
-					
+					placeRequest.setEnabled(false);		
 				}
 				finally
 				{
-					
+					//Empty "finally" block
 				}
 			}
 			
@@ -1474,10 +1332,8 @@ public class Main_Client {
 						try {
 							queryGetBookServer(findArr);
 						} catch (ClassNotFoundException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						} catch (IOException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 					}
@@ -1493,16 +1349,11 @@ public class Main_Client {
 						try {
 							queryGetBookInfoServer(findArr);
 						} catch (ClassNotFoundException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						} catch (IOException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-						
 					}
-					
-					
 				}
 			}
 			
@@ -1517,11 +1368,6 @@ public class Main_Client {
 					
 					outToServer.writeObject(x);
 					outToServer.flush();
-				
-					
-					
-					
-					
 					bookInfo.setText((String)inFromServer.readObject());
 					if (bookInfo.getText().startsWith("Available"))
 					{
@@ -1534,20 +1380,12 @@ public class Main_Client {
 					placeRequest.setEnabled(true);
 					msgSuc.setText("");
 					System.out.println(genre);
-					
-					
-					
-					
-					
 				}
 				finally
 				{
-					
+					//Empty "finally" block
 				}
 			}
-			
-			
-			
 			private void queryGetBookServer(String[] x) throws IOException, ClassNotFoundException
 			{
 				
@@ -1567,18 +1405,11 @@ public class Main_Client {
 					genBook = (ArrayList<String>) inFromServer.readObject();
 					
 					serverbooks.setListData(genBook.toArray());
-					
-					
 					System.out.println(genre);
-					
-					
-					
-					
-					
 				}
 				finally
 				{
-					
+					//Empty "finally" block
 				}
 			}
 			private void queryGenreServer(String[] x) throws IOException, ClassNotFoundException
@@ -1589,35 +1420,17 @@ public class Main_Client {
 					Socket socket = new Socket("localhost",3678);
 					ObjectOutputStream outToServer = new ObjectOutputStream(socket.getOutputStream());
 					ObjectInputStream inFromServer = new ObjectInputStream(socket.getInputStream());
-					
 					outToServer.writeObject(x);
 					outToServer.flush();
-				
-					
-					
 					genre = (ArrayList<String>) inFromServer.readObject();
-					
 					mybookslist.setListData(genre.toArray());
-					
 					System.out.println(genre);
-					
-					
-					
-					
-					
 				}
 				finally
 				{
-					
+					//Empty "finally" block
 				}
 			}
-			
-			
-			
 			}
-		
-		
-		
 	}
-
 }
