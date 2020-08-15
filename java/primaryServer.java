@@ -26,7 +26,7 @@ public class primaryServer {
 
 
     //Init the mySQL driver
-    public Main_Server() throws ClassNotFoundException {
+    public primaryServer() throws ClassNotFoundException {
         Class.forName("com.mysql.jdbc.Driver");
     }
 
@@ -61,10 +61,10 @@ public class primaryServer {
 
     public static void main(String argv[]) throws Exception {
 
-        Main_Server server = null;
+        primaryServer server = null;
         try {
             //Instantiate an object of this class. This will load the JDBC database driver
-            server = new Main_Server();
+            server = new primaryServer();
         } catch (ClassNotFoundException e) {
             System.out.println("unable to load JDBC driver");
             e.printStackTrace();
