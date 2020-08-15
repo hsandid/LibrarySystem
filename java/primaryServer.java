@@ -12,8 +12,7 @@ import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 
-//Primary class Main_Server
-public class Main_Server {
+public class primaryServer {
 
     //final Variables associated to mySQL connections
     static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
