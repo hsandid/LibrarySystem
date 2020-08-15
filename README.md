@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/hsandid/LibrarySystem.svg?branch=master)](https://travis-ci.com/hsandid/LibrarySystem)
+
 # Library System, realized for EECE-350 (Computer Networks)
 
 Main objective of this project was to learn client/server interaction using socket programming, and how to initialize & interact with a SQL database.
