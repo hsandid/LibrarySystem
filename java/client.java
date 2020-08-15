@@ -36,7 +36,7 @@ import javax.swing.event.ListSelectionListener;
 
 
 // Opening up the main class
-public class Main_Client {
+public class client {
 
     // Main Class , we initialize the GUI and set it to visible
 
