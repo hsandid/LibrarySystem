@@ -30,11 +30,3 @@ CREATE TABLE books ( genre VARCHAR(30) NOT NULL,title VARCHAR(60) NOT NULL, date
 
 INSERT INTO books VALUE ('Sci-fi','Great Scott!',1936);
 INSERT INTO books VALUE ('Sci-fi','Taboo',1993);
-
-select * from users
-
-
-
-
-
-
