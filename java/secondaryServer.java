@@ -27,7 +27,7 @@ public class secondaryServer {
 
 
     //Init the mySQL driver
-    public Secondary_Server() throws ClassNotFoundException {
+    public secondaryServer() throws ClassNotFoundException {
         Class.forName("com.mysql.jdbc.Driver");
     }
 
@@ -61,10 +61,10 @@ public class secondaryServer {
 
     public static void main(String argv[]) throws Exception {
 
-        Secondary_Server server = null;
+        secondaryServer server = null;
         try {
             //Instantiate an object of this class. This will load the JDBC database driver
-            server = new Secondary_Server();
+            server = new secondaryServer();
         } catch (ClassNotFoundException e) {
             System.out.println("unable to load JDBC driver");
             e.printStackTrace();
